@@ -15,6 +15,6 @@ After that, it clicks the categories tab to enter. There, it creates a new categ
 
 ### How to run the Automation
 As the project only has one test case, using a command such as:
-"npx playwright show-report" should be enough. There are other options such as:
-"npx playwright test --ui" to open the test administration panel and run the test case there.
-"npx playwright test --headed" to watch the test case running in a headed window.
+`npx playwright show-report` should be enough. There are other options such as:
+`npx playwright test --ui` to open the test administration panel and run the test case there.
+`npx playwright test --headed` to watch the test case running in a headed window.
