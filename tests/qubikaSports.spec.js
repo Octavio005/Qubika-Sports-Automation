@@ -4,19 +4,6 @@ import { QubikaDashboardPage } from '../pages/dashboard-site.page';
 import { QubikaCategoriesPage } from '../pages/categories-site.page';
 
 
-test.only('Qubika API register user', async({ request }) => {
-  const response = await request.post('https://api.club-administration.qa.qubika.com/swagger-ui/index.html#/auth-controller/registerUserUsingPOST', {
-      "email": "testing1@qubika.com",
-      "password": "12345678",
-      "roles": [
-        "ROLE_ADMIN"
-      ]
-  });
-  const text = await response.text();
-  console.log(text); 
-});
-
-
 test('Qubika Sports Automation ', async ({ page }) => {
   const email = 'testing@qubika.com'; //New user created from Swagger
   const password = '12345678';
