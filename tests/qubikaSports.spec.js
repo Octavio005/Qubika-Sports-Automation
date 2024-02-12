@@ -5,8 +5,12 @@ import { QubikaCategoriesPage } from '../pages/categories-site.page';
 
 
 test('Qubika Sports Automation ', async ({ page }) => {
-  const email = 'testing@qubika.com'; //New user created from Swagger
+
+  const email = 'testing203@qubika.com';
   const password = '12345678';
+
+  await register(page, email, password); //Registers new user through API
+
   const newCategory = 'Cricket';
   const newSubcategory = 'Futbol';
 
@@ -32,3 +36,24 @@ test('Qubika Sports Automation ', async ({ page }) => {
   const lastSubcategoryText = await page.textContent(qubikaCategoriesPage.getLastCategory());
   await expect(lastSubcategoryText).toContain(newSubcategory); //Validates that new subcategory name is the same as the const
 });
+
+const register = async (page, email, password) => {
+  const userData = {
+    email: email,
+    password: password,
+    roles: ["ROLE_ADMIN"]
+  };
+
+  const response = await page.evaluate(async (userData) => {
+    const response = await fetch('https://api.club-administration.qa.qubika.com/api/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userData)
+    });
+    return await response.text();
+  }, userData);
+
+  console.log(response);
+}
